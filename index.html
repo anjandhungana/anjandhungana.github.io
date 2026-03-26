@@ -127,10 +127,94 @@
       color: var(--muted); font-size: .85rem;
     }
 
+    /* ── Experience ── */
+    .timeline { display: flex; flex-direction: column; gap: 1.5rem; }
+    .timeline-item {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.4rem 1.6rem;
+      position: relative; transition: border-color .2s;
+    }
+    .timeline-item:hover { border-color: var(--accent); }
+    .timeline-item::before {
+      content: '';
+      position: absolute; left: -1px; top: 0; bottom: 0; width: 3px;
+      background: var(--accent); border-radius: 0 3px 3px 0;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .timeline-item:hover::before { opacity: 1; }
+    .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: .4rem; margin-bottom: .5rem; }
+    .timeline-role { color: var(--white); font-size: 1rem; font-weight: 600; }
+    .timeline-company { color: var(--accent); font-size: .92rem; margin-bottom: .3rem; }
+    .timeline-date { color: var(--muted); font-size: .82rem; white-space: nowrap; }
+    .timeline-desc { color: var(--text); font-size: .88rem; margin-bottom: .6rem; }
+    .timeline-item ul { padding-left: 1.2rem; color: var(--muted); font-size: .87rem; }
+    .timeline-item li { padding: .2rem 0; }
+
+    /* ── Education ── */
+    .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+    .edu-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.4rem;
+      transition: border-color .2s;
+    }
+    .edu-card:hover { border-color: var(--accent); }
+    .edu-card .degree { color: var(--white); font-size: .98rem; font-weight: 600; margin-bottom: .25rem; }
+    .edu-card .institution { color: var(--accent); font-size: .9rem; margin-bottom: .25rem; }
+    .edu-card .edu-meta { color: var(--muted); font-size: .82rem; }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Back-to-top button ── */
+    #back-top {
+      position: fixed; bottom: 1.8rem; right: 1.8rem;
+      background: var(--accent); color: #fff;
+      border: none; border-radius: 50%;
+      width: 42px; height: 42px;
+      font-size: 1.1rem; cursor: pointer;
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s, transform .3s;
+      z-index: 200;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #back-top.show { opacity: 1; pointer-events: auto; }
+    #back-top:hover { transform: translateY(-3px); }
+
+    /* ── Mobile hamburger ── */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: .25rem;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px; background: var(--text);
+      border-radius: 2px; transition: transform .25s, opacity .25s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     /* ── Responsive ── */
     @media (max-width: 600px) {
       .about-grid { grid-template-columns: 1fr; }
-      .nav-links { gap: 1rem; }
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none; flex-direction: column; gap: .5rem;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(13,17,23,.97);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 2rem;
+      }
+      .nav-links.open { display: flex; }
+      nav { position: relative; flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -139,8 +223,13 @@
   <!-- Navigation -->
   <nav>
     <span class="nav-brand">AD</span>
-    <ul class="nav-links">
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
       <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -159,7 +248,7 @@
   </section>
 
   <!-- About -->
-  <section id="about">
+  <section id="about" class="reveal">
     <h2 class="section-title">About Me</h2>
     <div class="about-grid">
       <div>
@@ -175,8 +264,101 @@
     </div>
   </section>
 
+  <!-- Experience -->
+  <section id="experience" class="reveal">
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Software Engineer</div>
+            <div class="timeline-company">Acme Technologies · Full-time</div>
+          </div>
+          <span class="timeline-date">Jun 2023 – <span id="current-role-end">Present</span></span>
+        </div>
+        <p class="timeline-desc">Building and maintaining scalable microservices for a SaaS platform serving 100k+ users.</p>
+        <ul>
+          <li>Designed and shipped a real-time notification service (WebSocket + Redis Pub/Sub) reducing latency by 40%.</li>
+          <li>Migrated legacy REST endpoints to GraphQL, cutting over-fetching and improving mobile load times.</li>
+          <li>Led a team of 3 engineers to deliver a self-service billing portal on schedule.</li>
+        </ul>
+        <div class="tag-row" style="margin-top:.75rem">
+          <span class="tag">TypeScript</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Docker</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Junior Software Developer</div>
+            <div class="timeline-company">BrightPixel Studio · Full-time</div>
+          </div>
+          <span class="timeline-date">Aug 2021 – May 2023</span>
+        </div>
+        <p class="timeline-desc">Contributed to multiple client-facing web apps across the full stack.</p>
+        <ul>
+          <li>Developed reusable React component library adopted across 5 projects, reducing dev time by 30%.</li>
+          <li>Integrated third-party payment and OAuth providers (Stripe, Google, GitHub).</li>
+          <li>Improved test coverage from 45% to 85% with Jest and React Testing Library.</li>
+        </ul>
+        <div class="tag-row" style="margin-top:.75rem">
+          <span class="tag">React</span>
+          <span class="tag">Python</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">AWS</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div>
+            <div class="timeline-role">Software Engineering Intern</div>
+            <div class="timeline-company">DataStream Analytics · Internship</div>
+          </div>
+          <span class="timeline-date">May 2020 – Jul 2021</span>
+        </div>
+        <p class="timeline-desc">Assisted in building data ingestion pipelines and internal tooling.</p>
+        <ul>
+          <li>Built automated ETL pipelines processing 2 GB of CSV data daily using Python and Airflow.</li>
+          <li>Created interactive dashboards with Plotly Dash for business intelligence reporting.</li>
+        </ul>
+        <div class="tag-row" style="margin-top:.75rem">
+          <span class="tag">Python</span>
+          <span class="tag">Airflow</span>
+          <span class="tag">Plotly</span>
+          <span class="tag">SQL</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="reveal">
+    <h2 class="section-title">Education</h2>
+    <div class="edu-grid">
+
+      <div class="edu-card">
+        <div class="degree">🎓 B.S. in Computer Science</div>
+        <div class="institution">Tribhuvan University</div>
+        <div class="edu-meta">2016 – 2020 &nbsp;·&nbsp; GPA 3.8 / 4.0</div>
+      </div>
+
+      <div class="edu-card">
+        <div class="degree">📜 AWS Certified Solutions Architect</div>
+        <div class="institution">Amazon Web Services</div>
+        <div class="edu-meta">Issued Oct 2022 &nbsp;·&nbsp; Expires Oct 2025</div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Skills -->
-  <section id="skills">
+  <section id="skills" class="reveal">
     <h2 class="section-title">Skills</h2>
     <div class="skills-grid">
       <div class="skill-card"><span class="icon">⚛️</span>React</div>
@@ -193,7 +375,7 @@
   </section>
 
   <!-- Projects -->
-  <section id="projects">
+  <section id="projects" class="reveal">
     <h2 class="section-title">Projects</h2>
     <div class="projects-grid">
 
@@ -244,7 +426,7 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact">
+  <section id="contact" class="reveal">
     <h2 class="section-title">Get In Touch</h2>
     <p style="color:var(--muted); margin-bottom:1.5rem;">Whether you have a project in mind, a question, or just want to say hi — my inbox is always open.</p>
     <div class="contact-links">
@@ -259,6 +441,51 @@
   <footer>
     <p>Designed &amp; built by Anjan Dhungana &middot; <a href="https://github.com/anjandhungana/anjandhungana.github.io">Source on GitHub</a></p>
   </footer>
+
+  <!-- Back to top -->
+  <button id="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <script>
+    // ── Hamburger menu ──
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // ── Back-to-top button ──
+    const backTop = document.getElementById('back-top');
+    window.addEventListener('scroll', () => {
+      backTop.classList.toggle('show', window.scrollY > 300);
+    }, { passive: true });
+
+    // ── Scroll-reveal ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Keep current-role end date up to date ──
+    const currentEnd = document.getElementById('current-role-end');
+    if (currentEnd) {
+      const now = new Date();
+      currentEnd.textContent = now.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+    }
+  </script>
 
 </body>
 </html>

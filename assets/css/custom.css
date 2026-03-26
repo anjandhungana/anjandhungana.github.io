@@ -2,13 +2,14 @@
 
 /* Reduce padding on main page wrapper */
 .page {
-  padding-top: 2rem !important;
-  padding-bottom: 2rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
 }
 
 /* Reduce margins between sections */
 section, article {
-  margin-bottom: 2rem !important;
+  margin-bottom: 1rem !important;
+  margin-top: 0 !important;
 }
 
 /* Reduce margins on headings */
@@ -52,10 +53,13 @@ li {
 
 /* Compress masthead padding */
 .masthead {
-  margin-bottom: 1rem !important;
+  margin-bottom: 0rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
 }
 
 /* Main content area spacing */
 .main {
-  padding-top: 1rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
 }

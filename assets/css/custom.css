@@ -1,0 +1,61 @@
+/* Custom spacing adjustments */
+
+/* Reduce padding on main page wrapper */
+.page {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+/* Reduce margins between sections */
+section, article {
+  margin-bottom: 2rem !important;
+}
+
+/* Reduce margins on headings */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.8rem !important;
+}
+
+/* Reduce paragraph margins */
+p {
+  margin-bottom: 0.8rem !important;
+}
+
+/* Reduce list item spacing */
+ul, ol {
+  margin-bottom: 1rem !important;
+}
+
+li {
+  margin-bottom: 0.4rem !important;
+}
+
+/* Reduce entry/item spacing */
+.entry-header {
+  margin-bottom: 1rem !important;
+}
+
+.entry-content {
+  margin-bottom: 1rem !important;
+}
+
+/* Compact archive list spacing */
+.archive__item {
+  margin-bottom: 1rem !important;
+}
+
+/* Reduce side by side item spacing */
+.archive__item-title {
+  margin-bottom: 0.5rem !important;
+}
+
+/* Compress masthead padding */
+.masthead {
+  margin-bottom: 1rem !important;
+}
+
+/* Main content area spacing */
+.main {
+  padding-top: 1rem !important;
+}

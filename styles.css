@@ -39,23 +39,6 @@ nav {
 }
 
 .nav-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.nav-avatar {
-  width: 30px;
-  height: 30px;
-  max-width: 30px;
-  max-height: 30px;
-  border-radius: 999px;
-  object-fit: cover;
-  border: 2px solid rgba(79, 142, 247, 0.55);
-  box-shadow: 0 0 0 2px rgba(13, 17, 23, 0.8);
-}
-
-.nav-brand-text {
   font-weight: 800;
   font-size: 1.3rem;
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
@@ -121,6 +104,16 @@ p { margin-bottom: 1rem; color: var(--text); }
   margin: 0 auto;
   padding: 2rem;
   background: linear-gradient(135deg, rgba(79,142,247,0.05) 0%, rgba(79,142,247,0) 100%);
+}
+
+.profile-thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(79, 142, 247, 0.55);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+  margin-bottom: 1rem;
 }
 
 .hero-tag {
@@ -355,6 +348,7 @@ p { margin-bottom: 1rem; color: var(--text); }
 }
 
 @media (max-width: 480px) {
+  .profile-thumb { width: 60px; height: 60px; }
   .nav-links { flex-direction: column; gap: 0.5rem; }
   .hero-cta { flex-direction: column; }
   .btn { width: 100%; text-align: center; }

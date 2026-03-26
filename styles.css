@@ -45,8 +45,10 @@ nav {
 }
 
 .nav-avatar {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
+  max-width: 30px;
+  max-height: 30px;
   border-radius: 999px;
   object-fit: cover;
   border: 2px solid rgba(79, 142, 247, 0.55);

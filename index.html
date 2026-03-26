@@ -1,12 +1,139 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anjan Dhungana - Portfolio</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anjan Dhungana - Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav>
+    <span class="nav-brand">AD</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <p class="hero-tag">Hello!</p>
+    <h1>I'm Anjan Dhungana</h1>
+    <p class="subtitle">
+      Graduate Research Assistant working at the intersection of AI, IoT, and computer vision for poultry welfare and precision livestock systems.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am a graduate researcher at the University of Georgia focusing on the application of artificial intelligence and IoT to improve poultry welfare.
+    </p>
+    <p>
+      My work integrates machine learning, computer vision, and sensor systems to develop data-driven solutions for precision livestock management.
+    </p>
+
+    <ul>
+      <li><b>Location:</b> Athens, GA, USA</li>
+      <li><b>Email:</b> anzan@uga.edu</li>
+      <li><b>Phone:</b> +1 502 319 7752</li>
+    </ul>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div>
+      <h3>Graduate Research Assistant - University of Georgia</h3>
+      <p>Aug 2024 - Present</p>
+      <ul>
+        <li>Develop AI models for poultry behavior and welfare monitoring</li>
+        <li>Integrate IoT sensors for real-time data collection</li>
+        <li>Work on precision livestock systems</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Graduate Research Assistant - Kentucky State University</h3>
+      <p>Aug 2022 - Jul 2024</p>
+      <ul>
+        <li>Conducted metabolomics and methane production research</li>
+        <li>Performed statistical data analysis</li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Plant Science Instructor</h3>
+      <p>2022</p>
+    </div>
+
+    <div>
+      <h3>Agriculture Technician</h3>
+      <p>2020</p>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <p><b>Ph.D. Poultry Science</b> - University of Georgia (2024-Present)</p>
+    <p><b>M.S. Environmental Studies</b> - Kentucky State University (2022-2024)</p>
+    <p><b>B.Sc. Agriculture</b> - IAAS, Nepal (2015-2019)</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <p>
+      <span class="skill-badge">Machine Learning</span>
+      <span class="skill-badge">Computer Vision</span>
+      <span class="skill-badge">Data Analysis</span>
+      <span class="skill-badge">Python</span>
+      <span class="skill-badge">R</span>
+      <span class="skill-badge">JavaScript</span>
+      <span class="skill-badge">React</span>
+      <span class="skill-badge">IoT Systems</span>
+      <span class="skill-badge">MetaboAnalyst</span>
+      <span class="skill-badge">Adobe Suite</span>
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div>
+      <h3>Poultry Disease Detection</h3>
+      <p>Deep learning system for disease detection from chicken manure images.</p>
+    </div>
+    <div>
+      <h3>IoT Poultry Monitoring</h3>
+      <p>Sensor-based real-time poultry monitoring system.</p>
+    </div>
+    <div>
+      <h3>Metabolomics Analysis</h3>
+      <p>Analysis of livestock metabolism and methane production.</p>
+    </div>
+    <div>
+      <h3>Poultry Behavior Tracking</h3>
+      <p>Computer vision system for tracking poultry behavior.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Let's connect and build something amazing together.</p>
+    <p>
+      <a href="mailto:anzan@uga.edu">Email: anzan@uga.edu</a>
+    </p>
+    <p>
+      <a href="tel:+15023197752">Phone: +1 502 319 7752</a>
+    </p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
 </html>

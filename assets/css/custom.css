@@ -6,8 +6,15 @@
   padding-bottom: 0.5rem !important;
 }
 
-/* Reduce margins between sections */
-section, article {
+/* Section layout */
+section {
+  padding: 2rem 2rem !important;
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+}
+
+/* Keep articles compact */
+article {
   margin-bottom: 1rem !important;
   margin-top: 0 !important;
 }

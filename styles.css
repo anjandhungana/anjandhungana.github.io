@@ -343,6 +343,32 @@ p { margin-bottom: 1rem; color: var(--text); }
   font-size: 0.9rem;
 }
 
+#publications .publication-item {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+#publications .publication-item:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(79, 142, 247, 0.18);
+  transform: translateY(-2px);
+}
+
+#publications h3 {
+  margin: 0 0 0.35rem;
+  color: var(--white);
+}
+
+#publications p {
+  margin: 0;
+  color: var(--muted);
+}
+
 #contact {
   text-align: center;
   background: linear-gradient(135deg, rgba(79,142,247,0.08) 0%, transparent 100%);

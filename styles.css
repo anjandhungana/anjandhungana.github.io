@@ -107,9 +107,9 @@ p { margin-bottom: 1rem; color: var(--text); }
 }
 
 .profile-thumb {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
   object-fit: cover;
   border: 2px solid rgba(79, 142, 247, 0.55);
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
@@ -348,7 +348,7 @@ p { margin-bottom: 1rem; color: var(--text); }
 }
 
 @media (max-width: 480px) {
-  .profile-thumb { width: 60px; height: 60px; }
+  .profile-thumb { width: 60px; height: 60px; border-radius: 30px; }
   .nav-links { flex-direction: column; gap: 0.5rem; }
   .hero-cta { flex-direction: column; }
   .btn { width: 100%; text-align: center; }

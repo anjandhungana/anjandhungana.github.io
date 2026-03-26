@@ -39,6 +39,21 @@ nav {
 }
 
 .nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.nav-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid rgba(79, 142, 247, 0.55);
+  box-shadow: 0 0 0 2px rgba(13, 17, 23, 0.8);
+}
+
+.nav-brand-text {
   font-weight: 800;
   font-size: 1.3rem;
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);

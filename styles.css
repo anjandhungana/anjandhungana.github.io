@@ -116,8 +116,8 @@ p { margin-bottom: 1rem; color: var(--text); }
   margin: 0 auto;
   padding: 2rem;
   background:
-    linear-gradient(135deg, rgba(13, 17, 23, 0.82) 0%, rgba(0, 0, 0, 0.55) 55%, rgba(0,0,0, 0.3) 100%),
-    url("images/bg.JPG") center/cover no-repeat;
+    linear-gradient(135deg, rgba(13, 17, 23, 0.55) 0%, rgba(13, 17, 23, 0.28) 55%, rgba(79, 142, 247, 0.2) 100%),
+    url("images/bg.JPG") center 35%/cover no-repeat;
   border-radius: 12px;
 }
 

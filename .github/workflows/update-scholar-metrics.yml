@@ -1,0 +1,41 @@
+name: Update Scholar Metrics
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 6 * * 1"
+
+permissions:
+  contents: write
+
+jobs:
+  update-scholar-metrics:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Refresh scholar-metrics.json
+        env:
+          S2_AUTHOR_ID: ${{ vars.S2_AUTHOR_ID }}
+          S2_API_KEY: ${{ secrets.S2_API_KEY }}
+        run: node .github/scripts/update_scholar_metrics.mjs
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet -- scholar-metrics.json; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scholar-metrics.json
+          git commit -m "chore: update scholar citation metrics"
+          git push

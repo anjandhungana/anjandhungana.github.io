@@ -369,6 +369,76 @@ p { margin-bottom: 1rem; color: var(--text); }
   color: var(--muted);
 }
 
+#scholar {
+  background: linear-gradient(135deg, rgba(79,142,247,0.08) 0%, rgba(28,33,40,0.6) 100%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem 2rem;
+}
+
+.scholar-intro {
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+}
+
+.scholar-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.metric-card {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 20px rgba(79, 142, 247, 0.16);
+}
+
+.metric-label {
+  color: var(--muted);
+  margin: 0 0 0.25rem;
+  font-size: 0.9rem;
+}
+
+.metric-value {
+  color: var(--white);
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.scholar-meta {
+  color: var(--muted);
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+}
+
+.scholar-link {
+  display: inline-block;
+  border: 1px solid var(--accent);
+  color: var(--white);
+  background: rgba(79, 142, 247, 0.12);
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.scholar-link:hover {
+  background: rgba(79, 142, 247, 0.25);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(79, 142, 247, 0.2);
+}
+
 #contact {
   text-align: center;
   background: linear-gradient(135deg, rgba(79,142,247,0.08) 0%, transparent 100%);
@@ -400,6 +470,7 @@ p { margin-bottom: 1rem; color: var(--text); }
   section { padding: 1rem 1.5rem; }
   h2 { font-size: 1.5rem; }
   #hero h1 { font-size: 2rem; }
+  #scholar { padding: 1rem 1.5rem; }
   .nav-toggle { display: flex; }
   .nav-links {
     position: absolute;

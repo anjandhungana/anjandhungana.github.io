@@ -39,3 +39,47 @@ const observer = new IntersectionObserver(
 );
 
 sections.forEach((section) => observer.observe(section));
+
+const loadScholarMetrics = async () => {
+  const citationsEl = document.getElementById('metric-citations');
+  const hIndexEl = document.getElementById('metric-h-index');
+  const i10IndexEl = document.getElementById('metric-i10-index');
+  const updatedEl = document.getElementById('scholar-last-updated');
+  const profileLinkEl = document.getElementById('scholar-profile-link');
+
+  if (!citationsEl || !hIndexEl || !i10IndexEl || !updatedEl || !profileLinkEl) {
+    return;
+  }
+
+  try {
+    const response = await fetch('scholar-metrics.json', { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error(`Failed to load scholar metrics: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const metrics = data?.metrics || {};
+
+    if (typeof metrics.citations === 'number') {
+      citationsEl.textContent = String(metrics.citations);
+    }
+    if (typeof metrics.hIndex === 'number') {
+      hIndexEl.textContent = String(metrics.hIndex);
+    }
+    if (typeof metrics.i10Index === 'number') {
+      i10IndexEl.textContent = String(metrics.i10Index);
+    }
+
+    if (typeof data?.lastUpdated === 'string' && data.lastUpdated.trim().length > 0) {
+      updatedEl.textContent = `Last updated: ${data.lastUpdated}`;
+    }
+
+    if (typeof data?.profileUrl === 'string' && data.profileUrl.startsWith('http')) {
+      profileLinkEl.setAttribute('href', data.profileUrl);
+    }
+  } catch (error) {
+    console.warn('Using fallback scholar metrics from HTML.', error);
+  }
+};
+
+loadScholarMetrics();

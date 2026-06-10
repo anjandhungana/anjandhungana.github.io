@@ -44,10 +44,13 @@ const loadScholarMetrics = async () => {
   const citationsEl = document.getElementById('metric-citations');
   const hIndexEl = document.getElementById('metric-h-index');
   const i10IndexEl = document.getElementById('metric-i10-index');
+  const firstAuthorPublicationsEl = document.getElementById('metric-first-author-publications');
+  const coAuthoredPublicationsEl = document.getElementById('metric-co-authored-publications');
   const updatedEl = document.getElementById('scholar-last-updated');
   const profileLinkEl = document.getElementById('scholar-profile-link');
+  
 
-  if (!citationsEl || !hIndexEl || !i10IndexEl || !updatedEl || !profileLinkEl) {
+  if (!citationsEl || !hIndexEl || !i10IndexEl || !firstAuthorPublicationsEl || !coAuthoredPublicationsEl || !updatedEl || !profileLinkEl) {
     return;
   }
 
@@ -68,6 +71,12 @@ const loadScholarMetrics = async () => {
     }
     if (typeof metrics.i10Index === 'number') {
       i10IndexEl.textContent = String(metrics.i10Index);
+    }
+    if (typeof metrics.firstAuthorPublications === 'number') {
+      firstAuthorPublicationsEl.textContent = String(metrics.firstAuthorPublications);
+    }
+    if (typeof metrics.coAuthoredPublications === 'number') {
+      coAuthoredPublicationsEl.textContent = String(metrics.coAuthoredPublications);
     }
 
     if (typeof data?.lastUpdated === 'string' && data.lastUpdated.trim().length > 0) {
